@@ -1,0 +1,43 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red202\green51\blue35;\red86\green32\blue244;
+\red251\green30\blue255;\red170\green171\blue37;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c83898\c28665\c18024;\cssrgb\c41680\c25960\c96645;
+\cssrgb\c100000\c29678\c100000;\cssrgb\c72330\c71683\c18597;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 \
+\cf3 // WARNING:\cf2  \cf3 Could\cf2  \cf3 not\cf2  \cf3 reconcile\cf2  \cf3 some\cf2  \cf3 variable\cf2  \cf3 overlaps\cf2 \
+\cf3 // WARNING:\cf2  \cf3 [rz-ghidra]\cf2  \cf3 Detected\cf2  \cf3 overlap\cf2  \cf3 for\cf2  \cf3 variable\cf2  \cf3 var_ch\cf2 \
+\cf3 // WARNING:\cf2  \cf3 [rz-ghidra]\cf2  \cf3 Detected\cf2  \cf3 overlap\cf2  \cf3 for\cf2  \cf3 variable\cf2  \cf3 var_8h\cf2 \
+\cf3 // WARNING:\cf2  \cf3 [rz-ghidra]\cf2  \cf3 Detected\cf2  \cf3 overlap\cf2  \cf3 for\cf2  \cf3 variable\cf2  \cf3 var_14h\cf2 \
+\
+\cf4 void\cf2  \cf3 main\cf2 (
+\f1\b \cf5 void
+\f0\b0 \cf2 )\
+\{\
+    \cf4 int64_t\cf2  iVar1;\
+    \cf4 int32_t\cf2  var_14h;\
+    \cf4 int64_t\cf2  var_10h;\
+    \
+    var_10h._0_4_ = \cf6 0\cf2 ;\
+    iVar1 = \cf3 sym.imp.malloc\cf2 (\cf6 0x14\cf2 );\
+    
+\f1\b \cf5 if
+\f0\b0 \cf2  (iVar1 == \cf6 0\cf2 ) \{\
+        \cf3 sym.imp.exit\cf2 (\cf6 0\cf2 );\
+    \}\
+    
+\f1\b \cf5 for
+\f0\b0 \cf2  (var_14h = \cf6 0\cf2 ; var_14h < \cf6 5\cf2 ; var_14h = var_14h + \cf6 1\cf2 ) \{\
+        \cf3 sym.imp.__isoc99_scanf\cf2 (\cf6 0x8d4\cf2 , iVar1 + (\cf4 int64_t\cf2 )var_14h * \cf6 4\cf2 , (\cf4 int64_t\cf2 )var_14h * \cf6 4\cf2 );\
+        var_10h._0_4_ = (\cf4 int32_t\cf2 )var_10h + *(\cf4 int32_t\cf2  *)(iVar1 + (\cf4 int64_t\cf2 )var_14h * \cf6 4\cf2 );\
+    \}\
+    \cf3 sym.imp.printf\cf2 (\cf6 0x8d7\cf2 , (\cf4 int32_t\cf2 )var_10h);\
+    \cf3 sym.imp.free\cf2 (iVar1);\
+    
+\f1\b \cf5 return
+\f0\b0 \cf2 ;\
+\}\
+}
