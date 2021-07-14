@@ -1,1 +1,1 @@
-# dynamicmemory
+C files written have been put in Source Files. Outputs from Ghidrall and Rizin are in the respective folders. For getting the decompiled code from the output files created from the C files we use the following commands: - rizin binary -aa -s main - pdg.
