@@ -1,0 +1,92 @@
+Warning: run rizin with -e io.cache=true to fix relocations in disassembly
+Warning: run rizin with -e io.cache=true to fix relocations in disassembly
+Decompiling took 4.00489 seconds.
+Failure in lifting function main in block 4
+Error: cannot load from value of type i64 ('%".32" = load i64, i64* %"register0x0"'): not a pointer
+; ModuleID = "malloc_only_sum_program.o"
+target triple = "i386-pc-linux-gnu"
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+
+%"local_struct.main" = type {i7999776, i32, i64}
+@"reloc.__libc_start_main" = global i32 0
+@"reloc._ITM_deregisterTMCloneTable" = global i32 0
+@"reloc._ITM_registerTMCloneTable" = global i32 0
+@"obj.__dso_handle" = global i32 0
+@"reloc.__cxa_finalize" = global i32 0
+@"sym..bss" = global i32 0
+@"segment.LOAD1" = global i32 0
+@"reloc.malloc" = global i32 0
+@"reloc.exit" = global i32 0
+@"reloc.__isoc99_scanf" = global i32 0
+@"reloc.printf" = global i32 0
+@"reloc.free" = global i32 0
+@"reloc.__gmon_start" = global i32 0
+define void @"main"() 
+{
+"0":
+  %"iVar1" = alloca i64
+  %".2" = alloca %"local_struct.main"
+  %"padding" = getelementptr inbounds %"local_struct.main", %"local_struct.main"* %".2", i32 0, i32 0
+  %"var_14h" = getelementptr inbounds %"local_struct.main", %"local_struct.main"* %".2", i32 0, i32 1
+  %"var_10h" = getelementptr inbounds %"local_struct.main", %"local_struct.main"* %".2", i32 0, i32 2
+  %"register0x206" = alloca i8
+  %"register0x0" = alloca i64
+  %".3" = load i64, i64* %"iVar1"
+  %".4" = icmp eq i64 %".3", 0
+  %".5" = zext i1 %".4" to i8
+  store i8 %".5", i8* %"register0x206"
+  %".7" = load i8, i8* %"register0x206"
+  %".8" = trunc i8 %".7" to i1
+  br i1 %".8", label %"1", label %"2"
+"1":
+  br label %"2"
+"2":
+  br label %"3"
+"3":
+  %".12" = load i32, i32* %"var_14h"
+  %".13" = icmp slt i32 %".12", 5
+  br i1 %".13", label %"4", label %"5"
+"4":
+  %".15" = load i32, i32* %"var_14h"
+  %".16" = sext i32 %".15" to i64
+  store i64 %".16", i64* %"register0x0"
+  %".18" = load i64, i64* %"register0x0"
+  %".19" = mul i64 %".18", 4
+  %".20" = load i64, i64* %"iVar1"
+  %".21" = add i64 %".20", %".19"
+  store i64 %".21", i64* %"register0x0"
+  %".23" = load i64, i64* %"register0x0"
+  %".24" = load i32, i32* %"var_14h"
+  %".25" = sext i32 %".24" to i64
+  store i64 %".25", i64* %"register0x0"
+  %".27" = load i64, i64* %"register0x0"
+  %".28" = mul i64 %".27", 4
+  %".29" = load i64, i64* %"iVar1"
+  %".30" = add i64 %".29", %".28"
+  %".31" = inttoptr i64 %".30" to i64*
+  %".32" = load i64, i64* %"register0x0"
+"5":
+}
+
+Traceback (most recent call last):
+  File "ghidrall.py", line 59, in <module>
+    module = lifter.lift_binary(decompile_info, args.file, lifting_options)
+  File "/home/usea/Ghidrall/src/lifter.py", line 28, in lift_binary
+    lifter = Lifter(decompile_info, filename, lifting_options)
+  File "/home/usea/Ghidrall/src/lifter.py", line 49, in __init__
+    self.populate_functions()
+  File "/home/usea/Ghidrall/src/lifter.py", line 84, in populate_functions
+    func.populate_cfg()
+  File "/home/usea/Ghidrall/src/lifted_function.py", line 80, in populate_cfg
+    block.populate()
+  File "/home/usea/Ghidrall/src/block.py", line 60, in populate
+    raise e
+  File "/home/usea/Ghidrall/src/block.py", line 55, in populate
+    self.ops.append(Operation.get_op_from_name(name, output, inputs, self))
+  File "/home/usea/Ghidrall/src/operation.py", line 27, in get_op_from_name
+    return GeneralData(opname, output, inputs, block)
+  File "/home/usea/Ghidrall/src/operation.py", line 333, in __init__
+    self.store_result(self.builder.load(self.inputs[1]))
+  File "/usr/local/lib/python3.6/dist-packages/llvmlite/ir/builder.py", line 742, in load
+    raise TypeError(msg % (ptr.type, str(ptr)))
+TypeError: cannot load from value of type i64 ('%".32" = load i64, i64* %"register0x0"'): not a pointer

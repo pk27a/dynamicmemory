@@ -1,0 +1,3 @@
+Decompiling took 3.30533 seconds.
+Lifting took 0.01060 seconds.
+Verifying took 0.00209 seconds.

@@ -1,0 +1,5 @@
+Warning: run rizin with -e io.cache=true to fix relocations in disassembly
+Warning: run rizin with -e io.cache=true to fix relocations in disassembly
+Decompiling took 3.39155 seconds.
+Lifting took 0.00993 seconds.
+Verifying took 0.00194 seconds.
