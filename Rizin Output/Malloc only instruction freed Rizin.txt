@@ -1,0 +1,16 @@
+
+// WARNING: [rz-ghidra] Detected overlap for variable var_ch
+// WARNING: [rz-ghidra] Detected overlap for variable var_8h
+
+void main(void)
+{
+    int64_t iVar1;
+    int64_t var_10h;
+    
+    iVar1 = sym.imp.malloc(0x14);
+    if (iVar1 == 0) {
+        sym.imp.exit(0);
+    }
+    sym.imp.free(iVar1);
+    return;
+}

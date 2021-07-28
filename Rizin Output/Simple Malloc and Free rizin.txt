@@ -1,0 +1,25 @@
+
+// WARNING: Could not reconcile some variable overlaps
+// WARNING: [rz-ghidra] Detected overlap for variable var_ch
+// WARNING: [rz-ghidra] Detected overlap for variable var_8h
+// WARNING: [rz-ghidra] Detected overlap for variable var_14h
+
+void main(void)
+{
+    int64_t iVar1;
+    int32_t var_14h;
+    int64_t var_10h;
+    
+    var_10h._0_4_ = 0;
+    iVar1 = sym.imp.malloc(0x14);
+    if (iVar1 == 0) {
+        sym.imp.exit(0);
+    }
+    for (var_14h = 0; var_14h < 5; var_14h = var_14h + 1) {
+        sym.imp.__isoc99_scanf(0x8d4, iVar1 + (int64_t)var_14h * 4, (int64_t)var_14h * 4);
+        var_10h._0_4_ = (int32_t)var_10h + *(int32_t *)(iVar1 + (int64_t)var_14h * 4);
+    }
+    sym.imp.printf(0x8d7, (int32_t)var_10h);
+    sym.imp.free(iVar1);
+    return;
+}
